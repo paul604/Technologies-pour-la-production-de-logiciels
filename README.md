@@ -22,6 +22,6 @@ Ce dépôt est mise à disposition selon les termes de la [licence Creative Comm
 This deposit is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ### Base de données
-Les données extraites des bases de données des [Pays de la Loire](http://data.paysdelaloire.fr) sont (telles que présentées sur [cette page](http://data.paysdelaloire.fr/licences/), sont sous licence :
+Les données extraites des bases de données des [Pays de la Loire](http://data.paysdelaloire.fr) sont (telles que présentées sur [cette page](http://data.paysdelaloire.fr/licences/)), sont sous licence :
 - [Open Data Base License (ODbL)](http://data.paysdelaloire.fr/fileadmin/cg44_opendata/images/contents/Licence_ODbL_VF_CG44.pdf)
 - [licence ouverte / open licence](https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf)
