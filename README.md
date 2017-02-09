@@ -12,3 +12,10 @@
 Ce module ne porte pas sur la programmation python.  
 L'objectif est de continuer à acquérir des bonnes pratiques telles qu'utilisées en développement professionnel.  
 Cela explique le fait que le projet est plus à même d'être réalisé par groupe.  
+
+## LICENSE
+[![Licence Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)  
+Ce dépôt est mise à disposition selon les termes de la [licence Creative Commons Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+[![Licence Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)  
+This deposit is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
