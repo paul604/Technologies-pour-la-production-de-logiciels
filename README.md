@@ -6,13 +6,12 @@ Module M4105C du DUT Informatique à l'IUT de Nantes
 :---:|:---:
 ![paul604](https://avatars2.githubusercontent.com/paul604?s=50) | ![ReedShalazi](https://avatars2.githubusercontent.com/ReedShalazi?s=50)
 
-[Sujet du projet](https://github.com/sebprunier/installations-sportives-pdl)
-
 ## But recherché
 
 Ce module ne porte pas sur la programmation python.  
 L'objectif est de continuer à acquérir des bonnes pratiques telles qu'utilisées en développement professionnel.  
 Cela explique le fait que le projet est plus à même d'être réalisé par groupe.  
+Cet enseignement est encadré par Sébastien Prunier, dont le [sujet est disponible sur son github](https://github.com/sebprunier/installations-sportives-pdl).  
 
 ## LICENSE
 [![Licence Creative Commons](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr)  
