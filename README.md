@@ -1,8 +1,9 @@
 # technologies-pour-la-production-de-logiciels
 
 ## Collaborators
-[paul604](https://github.com/paul604)  
-[ReedShalazi](https://github.com/ReedShalazi)  
+[![paul604](https://avatars2.githubusercontent.com/paul604?s=50)  paul604](https://github.com/paul604)  
+[![ReedShalazi](https://avatars2.githubusercontent.com/ReedShalazi?s=50)  ReedShalazi](https://github.com/ReedShalazi)  
+
 [Sujet du projet](https://github.com/sebprunier/installations-sportives-pdl)
 
 ## But recherché
