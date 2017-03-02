@@ -8,6 +8,7 @@ Fournit un ensemble de fonction pour :
 
 import os, urllib.request
 import sqlite3
+import csv
 
 def dl_data(override = False):
 	'''
@@ -49,32 +50,43 @@ def create_db():
 	     	adresse TEXT,
 	     	code_postal TEXT,
 	     	ville TEXT,
-	     	age REAL
-	     	age REAL
+	     	latitude REAL,
+	     	longitude REAL
 			)
-			""")
+		""")
 		cursor.execute("""
 			CREATE TABLE IF NOT EXISTS equipements(
 	    	numero INTEGER PRIMARY KEY UNIQUE,
 	     	nom TEXT,
-	     	numero_installation INTERGER
+	     	numero_installation INTERGER,
+	     	latitude REAL,
+	     	longitude REAL
 			)
-			""")
+		""")
 		cursor.execute("""
 			CREATE TABLE IF NOT EXISTS activites(
 	    	numero INTEGER PRIMARY KEY UNIQUE,
 	     	nom TEXT
 			)
-			""")
+		""")
 		cursor.execute("""
 			CREATE TABLE IF NOT EXISTS equipements_activites(
 	    	numero_equipements INTEGER PRIMARY KEY UNIQUE,
 	    	numero_activites INTEGER PRIMARY KEY UNIQUE
 			)
-			""")
+		""")
 		conn.commit()
 	except Exception as e:
-    	print("Erreur")
+    	print type(e)
     	conn.rollback()
-	finally:
+	finally :
 		db.close()
+
+def up_db():
+
+	read = csv.reader(open("data/installations.csv","rb"))
+	for row in read:
+		print(row)
+		#tuple dans tab
+
+up_db()
