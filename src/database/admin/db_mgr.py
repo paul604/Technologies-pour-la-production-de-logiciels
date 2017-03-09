@@ -11,7 +11,7 @@ def create_db():
 		os.mkdir('database')
 
 	try:
-		conn = sqlite3.connect('database/db.db')
+		conn = sqlite3.connect('data/database/db.db')
 
 		cursor = conn.cursor()
 		#clé étrangère ??
@@ -51,9 +51,4 @@ def create_db():
 	finally:
 		conn.close()
 
-def up_t_installations():
-
-	read = csv.reader(open("data/installations.csv","rb"))
-	for row in read:
-		print(row)
-		#tuple dans tab
+def csv_to_db():

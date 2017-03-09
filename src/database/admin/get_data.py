@@ -20,9 +20,9 @@ def dl_data(override = False):
 		os.mkdir('data');
 
 	# on y télécharge les CSV
-	if override or not os.path.isfile('data/installations.csv'):
-		urllib.request.urlretrieve('http://data.paysdelaloire.fr/api/publication/23440003400026_J335/installations_table/content/?format=csv', 'data/installations.csv')
-	if override or not os.path.isfile('data/equipements.csv'):
-		urllib.request.urlretrieve('http://data.paysdelaloire.fr/fileadmin/data/datastore/rpdl/sport/23440003400026_J336/equipements.csv', 'data/equipements.csv')
-	if override or not os.path.isfile('data/activites.csv'):
-		urllib.request.urlretrieve('http://data.paysdelaloire.fr/fileadmin/data/datastore/pdl/PLUS15000/J334_equipements_activites.csv', 'data/activites.csv')
+	if override or not os.path.isfile('data/csv/installations.csv'):
+		urllib.request.urlretrieve('http://data.paysdelaloire.fr/api/publication/23440003400026_J335/installations_table/content/?format=csv', 'data/csv/installations.csv')
+	if override or not os.path.isfile('data/csv/equipements.csv'):
+		urllib.request.urlretrieve('http://data.paysdelaloire.fr/fileadmin/data/datastore/rpdl/sport/23440003400026_J336/equipements.csv', 'data/csv/equipements.csv')
+	if override or not os.path.isfile('data/csv/activites.csv'):
+		urllib.request.urlretrieve('http://data.paysdelaloire.fr/fileadmin/data/datastore/pdl/PLUS15000/J334_equipements_activites.csv', 'data/csv/activites.csv')
