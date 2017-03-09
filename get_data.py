@@ -77,9 +77,9 @@ def create_db():
 		""")
 		conn.commit()
 	except Exception as e:
-    	print type(e)
-    	conn.rollback()
-	finally :
+		print (type(e))
+		conn.rollback()
+	finally:
 		db.close()
 
 def up_db():
