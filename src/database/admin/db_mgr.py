@@ -19,12 +19,15 @@ def create_db():
 
 		cursor = conn.cursor()
 		#clé étrangère ??
+
+		#numero== id instal
 		cursor.execute("""CREATE TABLE IF NOT EXISTS installation(
 	    	numero INTEGER PRIMARY KEY UNIQUE,
 	     	nom TEXT
 			)
 		""")
-		#== a numero dans installation
+
+		#numero== a numero dans installation
 		cursor.execute("""CREATE TABLE IF NOT EXISTS adresse(
 	    	numero INTEGER PRIMARY KEY UNIQUE,
 	     	adresse TEXT,
@@ -32,6 +35,8 @@ def create_db():
 	     	ville TEXT
 			)
 		""")
+
+		#numero==EquipementId
 		cursor.execute("""CREATE TABLE IF NOT EXISTS equipements(
 	    	numero INTEGER PRIMARY KEY UNIQUE,
 	     	nom TEXT,
@@ -40,6 +45,7 @@ def create_db():
 	     	longitude REAL
 			)
 		""")
+		
 		cursor.execute("""CREATE TABLE IF NOT EXISTS activites(
 	    	numero INTEGER PRIMARY KEY UNIQUE,
 	     	nom TEXT
