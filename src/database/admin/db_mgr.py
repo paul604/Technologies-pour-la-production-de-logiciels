@@ -1,14 +1,18 @@
 
+import os
 import sqlite3
 
 def create_db():
 	'''
 
 	'''
+	# on crée le dossier s'il n'existe pas
+	if not os.path.exists('data'):
+		os.mkdir('data');
 
 	# on crée le dossier s'il n'existe pas
-	if not os.path.exists('database'):
-		os.mkdir('database')
+	if not os.path.exists('data/database'):
+		os.mkdir('data/database')
 
 	try:
 		conn = sqlite3.connect('data/database/db.db')
@@ -17,18 +21,21 @@ def create_db():
 		#clé étrangère ??
 		cursor.execute("""CREATE TABLE IF NOT EXISTS installation(
 	    	numero INTEGER PRIMARY KEY UNIQUE,
-	     	nom TEXT,
+	     	nom TEXT
+			)
+		""")
+		#== a numero dans installation
+		cursor.execute("""CREATE TABLE IF NOT EXISTS adresse(
+	    	numero INTEGER PRIMARY KEY UNIQUE,
 	     	adresse TEXT,
 	     	code_postal TEXT,
-	     	ville TEXT,
-	     	latitude REAL,
-	     	longitude REAL
+	     	ville TEXT
 			)
 		""")
 		cursor.execute("""CREATE TABLE IF NOT EXISTS equipements(
 	    	numero INTEGER PRIMARY KEY UNIQUE,
 	     	nom TEXT,
-	     	numero_installation INTERGER,
+	     	numero_installation INTEGER,
 	     	latitude REAL,
 	     	longitude REAL
 			)
@@ -51,4 +58,8 @@ def create_db():
 	finally:
 		conn.close()
 
-def csv_to_db():
+# def csv_to_db():
+
+
+
+create_db()
