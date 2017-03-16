@@ -74,7 +74,7 @@ def create_db(project_root):
 
 def clear_db(project_root):
     '''
-        permet de clear la base de données 
+    Purge entièrement la base de données 
     '''
 
     try:
