@@ -51,6 +51,8 @@ try:
     cursor2 = conn2.cursor()
     for row in cursor2.execute('SELECT * FROM installation',):
         print (row)
+    for row in cursor2.execute('SELECT * FROM adresse',):
+        print (row)
 
 except Exception as e:
     raise

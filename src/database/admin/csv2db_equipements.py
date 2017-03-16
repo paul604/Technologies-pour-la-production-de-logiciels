@@ -14,8 +14,8 @@ def csv2db_equipements():
         # print(row['Nom du lieu dit']+','+row['Numero de la voie']+","+row['Nom de la voie'])
         # break
 		#tuple dans tab
-        tab_instalation.append((
-                row['InsNumeroInstall']
+        tab_equipements.append((
+                row['EquipementId']
                 ,row['EquNom']
                 ,row['InsNumeroInstall']
                 ,row['EquGpsY']
@@ -26,7 +26,7 @@ def csv2db_equipements():
         conn = sqlite3.connect('data/database/db.db')
         cursor = conn.cursor()
 
-        cursor.executemany('INSERT INTO equipements VALUES (?,?,?,?,?)', tab_instalation)
+        cursor.executemany('INSERT INTO equipements VALUES (?,?,?,?,?)', tab_equipements)
 
         conn.commit()
 
