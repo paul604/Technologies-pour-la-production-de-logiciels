@@ -1,9 +1,7 @@
 
 
 '''
-Fournit un ensemble de fonction pour :
-	* télécharger les fichiers CSV contenant les données
-	* les parser pour en insérer les données dans une base SQLite
+rôle : télécharger les fichiers CSV contenant les données
 '''
 
 import os, urllib.request
@@ -12,7 +10,7 @@ import csv
 def dl_data(project_root, override = False):
 	'''
 	Le paramètre override permet d'activer ou non l'écrasement des CSV.
-	Activer pour les télécharger à nouveau les CVS même si les fichiers existent.
+	Activer pour les télécharger à nouveau les CSV même si les fichiers existent.
 	'''
 
 	# on crée le dossier s'il n'existe pas
