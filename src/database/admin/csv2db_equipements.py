@@ -26,6 +26,10 @@ def csv2db_equipements():
         conn = sqlite3.connect('data/database/db.db')
         cursor = conn.cursor()
 
+        cursor.execute("""
+            DELETE FROM equipements;
+        """)
+
         cursor.executemany('INSERT INTO equipements VALUES (?,?,?,?,?)', tab_equipements)
 
         conn.commit()
@@ -35,19 +39,3 @@ def csv2db_equipements():
     	conn.rollback()
     finally:
     	conn.close()
-
-
-#test
-
-csv2db_equipements()
-
-try:
-    conn2 = sqlite3.connect('data/database/db.db')
-    cursor2 = conn2.cursor()
-    for row in cursor2.execute('SELECT * FROM equipements',):
-        print (row)
-
-except Exception as e:
-    raise
-finally:
-    conn2.close()

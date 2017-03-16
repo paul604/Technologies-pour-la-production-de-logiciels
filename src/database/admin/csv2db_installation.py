@@ -30,6 +30,13 @@ def csv2db_installation():
         conn = sqlite3.connect('data/database/db.db')
         cursor = conn.cursor()
 
+        cursor.execute("""
+            DELETE FROM installation;
+        """)
+        cursor.execute("""
+            DELETE FROM adresse;
+        """)
+
         cursor.executemany('INSERT INTO installation VALUES (?,?)', tab_instalation)
         cursor.executemany('INSERT INTO adresse VALUES (?,?,?,?)', tab_addr)
 
@@ -40,21 +47,3 @@ def csv2db_installation():
     	conn.rollback()
     finally:
     	conn.close()
-
-
-#test
-
-csv2db_installation()
-
-try:
-    conn2 = sqlite3.connect('data/database/db.db')
-    cursor2 = conn2.cursor()
-    for row in cursor2.execute('SELECT * FROM installation',):
-        print (row)
-    for row in cursor2.execute('SELECT * FROM adresse',):
-        print (row)
-
-except Exception as e:
-    raise
-finally:
-    conn2.close()
