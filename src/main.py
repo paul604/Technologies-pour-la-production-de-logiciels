@@ -16,11 +16,14 @@ sys.dont_write_bytecode = True
 # <project_root>/src/main.py
 import os
 project_root = os.path.abspath(os.path.dirname(os.path.abspath(__file__))+'/..')
-
+PROJECT_ROOT = os.path.join(project_root, __file__)
 
 from database.admin.get_data import dl_data
+from database.dao.dao.dao_installation import db2object
+from database.admin.csv2db_installation import csv2db_installation
 
 
 
 dl_data(project_root)
-
+csv2db_installation(project_root)
+db2object(project_root)
