@@ -2,12 +2,12 @@
 import csv
 import sqlite3
 
-def csv2db_activites():
+def csv2db_activites(project_root):
     '''
     update de la table activites de la db en utilisant le fichier csv.
     '''
 
-    file = open('data/csv/activites.csv','r')
+    file = open(project_root+'/data/csv/activites.csv','r')
     read = csv.DictReader(file)
     tab_activites = []
     for row in read:
@@ -18,7 +18,7 @@ def csv2db_activites():
             ));
 
     try:
-        conn = sqlite3.connect('data/database/db.db')
+        conn = sqlite3.connect(project_root+'/data/database/db.db')
         cursor = conn.cursor()
 
         cursor.execute("""

@@ -2,20 +2,20 @@
 import os
 import sqlite3
 
-def create_db():
+def create_db(project_root):
     '''
-
+	Crée la base de données
     '''
     # on crée le dossier s'il n'existe pas
-    if not os.path.exists('data'):
-        os.mkdir('data');
+    if not os.path.exists(project_root+'/data'):
+        os.mkdir(project_root+'/data');
 
     # on crée le dossier s'il n'existe pas
-    if not os.path.exists('data/database'):
-        os.mkdir('data/database')
+    if not os.path.exists(project_root+'/data/database'):
+        os.mkdir(project_root+'/data/database')
 
     try:
-        conn = sqlite3.connect('data/database/db.db')
+        conn = sqlite3.connect(project_root+'/data/database/db.db')
 
         cursor = conn.cursor()
         #clé étrangère ??
@@ -67,13 +67,18 @@ def create_db():
     finally:
         conn.close()
 
-def clear_db():
+
+
+
+
+
+def clear_db(project_root):
     '''
-        permet de clear la db
+        permet de clear la base de données 
     '''
 
     try:
-        conn = sqlite3.connect('data/database/db.db')
+        conn = sqlite3.connect(project_root+'/data/database/db.db')
 
         cursor = conn.cursor()
         cursor.execute("""

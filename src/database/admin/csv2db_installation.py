@@ -2,12 +2,12 @@
 import csv
 import sqlite3
 
-def csv2db_installation():
+def csv2db_installation(project_root):
     '''
     update de la table installations de la db en utilisant le fichier csv.
     '''
 
-    file = open('data/csv/installations.csv','r')
+    file = open(project_root+'/data/csv/installations.csv','r')
     read = csv.DictReader(file)
     tab_instalation = []
     tab_addr = []
@@ -27,7 +27,7 @@ def csv2db_installation():
         ))
 
     try:
-        conn = sqlite3.connect('data/database/db.db')
+        conn = sqlite3.connect(project_root+'/data/database/db.db')
         cursor = conn.cursor()
 
         cursor.execute("""
