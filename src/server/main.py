@@ -15,21 +15,19 @@ sys.dont_write_bytecode = True
 # on récupère le path de la racine du projet en sachant que le main est toujours placé à la racine du projet sous src
 # <project_root>/src/main.py
 import os
-project_root = os.path.abspath(os.path.dirname(os.path.abspath(__file__))+'/..')
-PROJECT_ROOT = os.path.join(project_root, __file__)
+project_root = os.path.abspath(os.path.dirname(os.path.abspath(__file__))+'/../..')
 
 
 # autres imports
 from database.admin.get_data import dl_data
-from database.dao.dao.dao_installation import db2object
+from database.admin.db_mgr import create_db
 from database.admin.csv2db_installation import csv2db_installation
-from rest.lib.bottle import route, run
 from rest.api.endpoint import launch_rest_api_service
 
 
 dl_data(project_root)
+create_db(project_root)
 csv2db_installation(project_root)
-db2object(project_root)
 launch_rest_api_service()
 
 
