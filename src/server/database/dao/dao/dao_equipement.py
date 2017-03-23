@@ -3,7 +3,7 @@ from ..bean.Equipement import Equipement
 
 def db2object(project_root, e_id=-1):
     '''
-    Retourne l'equipements avec l'id passé en param ou si id = -1 retourne l'ensemble des equipements contenus dans la base de données sous forme d'objets Equipement
+    Retourne l'equipements avec l'id passé en param ou si id == -1 retourne l'ensemble des equipements contenus dans la base de données sous forme d'objets Equipement
     '''
 
     try:
@@ -11,10 +11,12 @@ def db2object(project_root, e_id=-1):
 
         cur = conn.cursor()
         if(e_id == -1):
+            #get tout les equipements
             cur.execute("""SELECT *
                 FROM equipements
                 """)
         else:
+            #get l'equipements avec l'id
             cur.execute("""SELECT *
                 FROM equipements
                 WHERE equipements.numero_equipements=?
@@ -25,6 +27,7 @@ def db2object(project_root, e_id=-1):
 
         equipements = set()
 
+        # add toute les valeur d'un tuple du select dans un objet Equipement puis on ajoute cette object dans un set.
         for row in rows:
             equipements.add(Equipement(
                 row[0]
