@@ -27,3 +27,12 @@ from database.admin.csv2db_installation import csv2db_installation
 dl_data(project_root)
 csv2db_installation(project_root)
 db2object(project_root)
+
+
+from bottle import route, run
+
+@route('/')
+def hello():
+    return "Hello World!"
+
+run(host='localhost', port=1234, debug=True)
