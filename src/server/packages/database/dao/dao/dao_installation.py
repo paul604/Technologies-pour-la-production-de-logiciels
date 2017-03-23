@@ -30,6 +30,7 @@ def db2object(project_root, i_id=-1):
 
         # add toute les valeur d'un tuple du select dans un objet Installation puis on ajoute cette object dans un set.
         for row in rows:
+            print(row.type)
             installations.add(Installation(
                 row[0]
                 ,row[1]

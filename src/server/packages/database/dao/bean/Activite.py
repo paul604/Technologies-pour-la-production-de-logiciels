@@ -9,3 +9,6 @@ class Activite:
 		self.numero_activites =numero_activites
 		self.numero_equipements  =numero_equipements
 		self.desc_act =desc_act
+
+	def __repr__(self):
+		return str(self.id)+' '+self.nom+' '+str(self.numero_activites)+' '+str(self.numero_equipements)+' '+self.desc_act

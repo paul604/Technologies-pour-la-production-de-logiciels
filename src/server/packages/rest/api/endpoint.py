@@ -6,8 +6,10 @@ http://bottlepy.org/docs/dev/tutorial.html
 
 
 
-from rest.lib.bottle import route, run
-from ...database.dao.bean import * #FIXME ValueError: attempted relative import beyond top-level package
+from ..lib.bottle import route, run
+from ...database.dao.dao.dao_installation import *
+from ...database.dao.dao.dao_equipement import *
+from ...database.dao.dao.dao_activite import *
 
 
 
@@ -28,10 +30,15 @@ def launch_rest_api_service(host='localhost', port=1234, debug=False):
 # toutes les installations
 @route('/data')
 def get_i():
-	return None #TODO 
+	return None #TODO
 
 
 # une installation
 @route('/data/<i_id:int>')
 def get_i(id):
-	return None #TODO 
+	return None #TODO
+
+
+@route('/')
+def blbl():
+	return db2object(project_root, i_id=-1):
