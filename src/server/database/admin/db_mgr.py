@@ -18,7 +18,6 @@ def create_db(project_root):
         conn = sqlite3.connect(project_root+'/data/database/db.db')
 
         cursor = conn.cursor()
-        #clé étrangère ??
 
         #numero== id instal
         cursor.execute("""CREATE TABLE IF NOT EXISTS installation(
@@ -37,7 +36,7 @@ def create_db(project_root):
             )
         """)
 
-        #numero==EquipementId
+        #numero_equipements==EquipementId
         cursor.execute("""CREATE TABLE IF NOT EXISTS equipements(
             numero_equipements INTEGER PRIMARY KEY UNIQUE,
             nom TEXT,
@@ -74,7 +73,7 @@ def create_db(project_root):
 
 def clear_db(project_root):
     '''
-    Purge entièrement la base de données 
+    Purge entièrement la base de données
     '''
 
     try:
