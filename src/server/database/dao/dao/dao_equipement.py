@@ -17,8 +17,8 @@ def db2object(project_root, id=-1):
         else:
             cur.execute("""SELECT *
                 FROM equipements
-                WHERE 
-            """)
+                WHERE equipements.numero_equipements=?
+            """,id)
 
 
         rows = cur.fetchall()
