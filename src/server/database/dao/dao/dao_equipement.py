@@ -1,7 +1,7 @@
 import sqlite3
 from ..bean.Equipement import Equipement
 
-def db2object(project_root, id=-1):
+def db2object(project_root, e_id=-1):
     '''
     Retourne l'equipements avec l'id passé en param ou si id = -1 retourne l'ensemble des equipements contenus dans la base de données sous forme d'objets Equipement
     '''
@@ -10,7 +10,7 @@ def db2object(project_root, id=-1):
         conn = sqlite3.connect(project_root+'/data/database/db.db')
 
         cur = conn.cursor()
-        if(id == -1):
+        if(e_id == -1):
             cur.execute("""SELECT *
                 FROM equipements
                 """)
@@ -18,7 +18,7 @@ def db2object(project_root, id=-1):
             cur.execute("""SELECT *
                 FROM equipements
                 WHERE equipements.numero_equipements=?
-            """,id)
+            """,  (e_id, ))
 
 
         rows = cur.fetchall()
@@ -42,5 +42,4 @@ def db2object(project_root, id=-1):
     finally:
         conn.close()
 
-    print(equipements)
     return equipements

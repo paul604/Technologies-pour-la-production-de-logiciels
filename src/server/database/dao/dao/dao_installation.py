@@ -1,7 +1,7 @@
 import sqlite3
 from ..bean.Installation import Installation
 
-def db2object(project_root, id=-1):
+def db2object(project_root, i_id=-1):
     '''
     Retourne l'ensemble des installations contenus dans la base de données sous forme d'objets Installation
     '''
@@ -10,7 +10,7 @@ def db2object(project_root, id=-1):
         conn = sqlite3.connect(project_root+'/data/database/db.db')
 
         cur = conn.cursor()
-        if(id == -1):
+        if(i_id == -1):
             cur.execute("""SELECT installation.numero, installation.nom, adresse.adresse, adresse.code_postal, adresse.ville
                 FROM installation, adresse
                 WHERE installation.numero=adresse.numero
@@ -18,8 +18,8 @@ def db2object(project_root, id=-1):
         else:
             cur.execute("""SELECT installation.numero, installation.nom, adresse.adresse, adresse.code_postal, adresse.ville
                 FROM installation, adresse
-                WHERE installation.numero=adresse.numero, installation.numero=?
-            """, id)
+                WHERE installation.numero=adresse.numero AND installation.numero=?
+            """, (i_id, ))
 
         rows = cur.fetchall()
 
@@ -42,4 +42,5 @@ def db2object(project_root, id=-1):
     finally:
         conn.close()
 
+    print(installations)
     return installations
