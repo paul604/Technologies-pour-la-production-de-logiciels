@@ -4,7 +4,7 @@ import sqlite3
 
 def csv2db_activites(project_root):
     '''
-    update de la table activites de la db en utilisant le fichier csv.
+    Mise-à-jour de la table activitées de la base de données en utilisant le fichier csv activites
     '''
 
     file = open(project_root+'/data/csv/activites.csv','r')
@@ -31,8 +31,6 @@ def csv2db_activites(project_root):
 
     except Exception as e:
         print (type(e))
-        # print("-------------------------")
-        # print (e.arg)
         print("-------------------------")
         print (e)
         conn.rollback()

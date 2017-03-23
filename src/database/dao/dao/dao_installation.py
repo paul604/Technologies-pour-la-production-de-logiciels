@@ -2,34 +2,38 @@ import sqlite3
 from ..bean.Installation import Installation
 
 def db2object(project_root):
-	'''
-	Retourne l'ensemble des installations contenus dans la base de données sous forme d'objets Installation
-	'''
+    '''
+    Retourne l'ensemble des installations contenus dans la base de données sous forme d'objets Installation
+    '''
 
-	try:
-    	conn = sqlite3.connect(project_root+'/data/database/db.db')
-    	cur = conn.cursor()
-    	cur.execute("""SELECT *
-        FROM installation, adresse
-        WHERE installation.numero=adresse.numero
-    	"""")
-    	rows = cur.fetchall()
+    try:
+        conn = sqlite3.connect(project_root+'/data/database/db.db')
 
-    	installations = set()
+        cur = conn.cursor()
+        cur.execute("""SELECT installation.numero, installation.nom, adresse.adresse, adresse.code_postal, adresse.ville
+            FROM installation, adresse
+            WHERE installation.numero=adresse.numero
+        """)
 
-    	for row in rows:
-        	installations.add(Installation(
-        		row['numero']
-        		,row['nom']
-        		,row['adresse']
-        		,row['code_postal']
-        		,row['ville']
-        	))
+        rows = cur.fetchall()
+
+        installations = set()
+
+        for row in rows:
+            installations.add(Installation(
+                row[0]
+                ,row[1]
+                ,row[2]
+                ,row[3]
+                ,row[4]
+            ))
 
     except Exception as e:
-    	print(type(e))
+        print (type(e))
+        print("-------------------------")
+        print (e)
 
-	finally:
-    	conn.close()
+    finally:
+        conn.close()
 
-	return installations
+    return installations
