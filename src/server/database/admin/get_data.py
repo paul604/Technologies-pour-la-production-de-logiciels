@@ -1,7 +1,7 @@
 
 
 '''
-rôle : télécharger les fichiers CSV contenant les données
+Télécharge les données sous forme de fichiers CSV
 '''
 
 import os, urllib.request
