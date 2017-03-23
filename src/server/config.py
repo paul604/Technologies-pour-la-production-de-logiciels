@@ -17,7 +17,7 @@ import os, sys
 path_of_here = os.path.abspath(__file__)
 
 # créer la constante
-PROJECT_ROOT = os.path.abspath(os.path.dirname(path_of_here)+'/../..')
+PROJECT_ROOT = os.path.normpath(os.path.join(os.path.sep, os.path.dirname(path_of_here), '..', '..'))
 
  # rendre accessible
 sys.path.append(path_of_here)
