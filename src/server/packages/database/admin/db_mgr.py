@@ -1,21 +1,21 @@
 
-import os
-import sqlite3
+import os, sqlite3
+from config import PROJECT_ROOT
 
-def create_db(project_root):
+def create_db():
     '''
 	Crée la base de données
     '''
     # on crée le dossier s'il n'existe pas
-    if not os.path.exists(project_root+'/data'):
-        os.mkdir(project_root+'/data');
+    if not os.path.exists(PROJECT_ROOT+'/data'):
+        os.mkdir(PROJECT_ROOT+'/data');
 
     # on crée le dossier s'il n'existe pas
-    if not os.path.exists(project_root+'/data/database'):
-        os.mkdir(project_root+'/data/database')
+    if not os.path.exists(PROJECT_ROOT+'/data/database'):
+        os.mkdir(PROJECT_ROOT+'/data/database')
 
     try:
-        conn = sqlite3.connect(project_root+'/data/database/db.db')
+        conn = sqlite3.connect(PROJECT_ROOT+'/data/database/db.db')
 
         cursor = conn.cursor()
 
@@ -71,13 +71,13 @@ def create_db(project_root):
 
 
 
-def clear_db(project_root):
+def clear_db(PROJECT_ROOT):
     '''
     Purge entièrement la base de données
     '''
 
     try:
-        conn = sqlite3.connect(project_root+'/data/database/db.db')
+        conn = sqlite3.connect(PROJECT_ROOT+'/data/database/db.db')
 
         cursor = conn.cursor()
         cursor.execute("""

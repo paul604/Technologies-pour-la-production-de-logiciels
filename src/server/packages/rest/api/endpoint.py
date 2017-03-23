@@ -6,6 +6,7 @@ http://bottlepy.org/docs/dev/tutorial.html
 
 
 
+from config import PROJECT_ROOT
 from ..lib.bottle import route, run
 from ...database.dao.dao.dao_installation import *
 from ...database.dao.dao.dao_equipement import *
@@ -41,4 +42,4 @@ def get_i(id):
 
 @route('/')
 def blbl():
-	return db2object(project_root, i_id=-1):
+	return PROJECT_ROOT

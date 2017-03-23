@@ -1,13 +1,14 @@
 import sqlite3
+from config import PROJECT_ROOT
 from ..bean.Activite import Activite
 
-def db2object(project_root, a_id=-1):
+def db2object(PROJECT_ROOT, a_id=-1):
     '''
     Retourne l'activite avec l'id passé en param ou si id == -1 retourne l'ensemble des activites contenus dans la base de données sous forme d'objets Activite
     '''
 
     try:
-        conn = sqlite3.connect(project_root+'/data/database/db.db')
+        conn = sqlite3.connect(PROJECT_ROOT+'/data/database/db.db')
 
         cur = conn.cursor()
         if(a_id == -1):

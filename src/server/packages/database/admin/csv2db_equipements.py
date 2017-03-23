@@ -1,14 +1,14 @@
 
-import csv
-import sqlite3
+import csv, sqlite3
+from config import PROJECT_ROOT
 
-def csv2db_equipements(project_root):
+def csv2db_equipements(PROJECT_ROOT):
     '''
     update de la table equipements de la db en utilisant le fichier csv.
     '''
 
     #get le CSV
-    file = open(project_root+'/data/csv/equipements.csv','r')
+    file = open(PROJECT_ROOT+'/data/csv/equipements.csv','r')
     read = csv.DictReader(file)
 
     tab_equipements = []
@@ -23,7 +23,7 @@ def csv2db_equipements(project_root):
             ));
 
     try:
-        conn = sqlite3.connect(project_root+'/data/database/db.db')
+        conn = sqlite3.connect(PROJECT_ROOT+'/data/database/db.db')
         cursor = conn.cursor()
 
         # DELETE les donnees pour éviter les doublon

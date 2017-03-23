@@ -1,14 +1,14 @@
 
-import csv
-import sqlite3
+import csv, sqlite3
+from config import PROJECT_ROOT
 
-def csv2db_activites(project_root):
+def csv2db_activites(PROJECT_ROOT):
     '''
     Mise-à-jour de la table activitées de la base de données en utilisant le fichier csv activites
     '''
 
     #get le CSV
-    file = open(project_root+'/data/csv/activites.csv','r')
+    file = open(PROJECT_ROOT+'/data/csv/activites.csv','r')
     read = csv.DictReader(file)
 
     tab_activites = []
@@ -21,7 +21,7 @@ def csv2db_activites(project_root):
             ));
 
     try:
-        conn = sqlite3.connect(project_root+'/data/database/db.db')
+        conn = sqlite3.connect(PROJECT_ROOT+'/data/database/db.db')
         cursor = conn.cursor()
 
         # DELETE les donnees pour éviter les doublon

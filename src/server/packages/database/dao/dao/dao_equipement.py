@@ -1,13 +1,14 @@
 import sqlite3
+from config import PROJECT_ROOT
 from ..bean.Equipement import Equipement
 
-def db2object(project_root, e_id=-1):
+def db2object(PROJECT_ROOT, e_id=-1):
     '''
     Retourne l'equipements avec l'id passé en param ou si id == -1 retourne l'ensemble des equipements contenus dans la base de données sous forme d'objets Equipement
     '''
 
     try:
-        conn = sqlite3.connect(project_root+'/data/database/db.db')
+        conn = sqlite3.connect(PROJECT_ROOT+'/data/database/db.db')
 
         cur = conn.cursor()
         if(e_id == -1):

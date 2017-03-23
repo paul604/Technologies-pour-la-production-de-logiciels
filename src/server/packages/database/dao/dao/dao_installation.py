@@ -1,13 +1,14 @@
 import sqlite3
+from config import PROJECT_ROOT
 from ..bean.Installation import Installation
 
-def db2object(project_root, i_id=-1):
+def db2object(PROJECT_ROOT, i_id=-1):
     '''
     Retourne l'installation avec l'id ou si id==-1 retourne l'ensemble des installations contenus dans la base de données sous forme d'objets Installation
     '''
 
     try:
-        conn = sqlite3.connect(project_root+'/data/database/db.db')
+        conn = sqlite3.connect(PROJECT_ROOT+'/data/database/db.db')
 
         cur = conn.cursor()
 
@@ -30,7 +31,6 @@ def db2object(project_root, i_id=-1):
 
         # add toute les valeur d'un tuple du select dans un objet Installation puis on ajoute cette object dans un set.
         for row in rows:
-            print(row.type)
             installations.add(Installation(
                 row[0]
                 ,row[1]
