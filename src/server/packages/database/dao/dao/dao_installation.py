@@ -1,14 +1,14 @@
 import sqlite3
-from config import PROJECT_ROOT
+from config import PROJECT_ROOT, DB_FULLPATH
 from ..bean.Installation import Installation
 
-def db2object(PROJECT_ROOT, i_id=-1):
+def db2object(i_id=-1):
     '''
     Retourne l'installation avec l'id ou si id==-1 retourne l'ensemble des installations contenus dans la base de données sous forme d'objets Installation
     '''
 
     try:
-        conn = sqlite3.connect(PROJECT_ROOT+'/data/database/db.db')
+        conn = sqlite3.connect(DB_FULLPATH)
 
         cur = conn.cursor()
 

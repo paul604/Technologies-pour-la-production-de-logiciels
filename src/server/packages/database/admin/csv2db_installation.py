@@ -1,6 +1,6 @@
 
 import csv, sqlite3
-from config import PROJECT_ROOT
+from config import PROJECT_ROOT, DB_FULLPATH
 
 def csv2db_installation():
     '''
@@ -22,13 +22,13 @@ def csv2db_installation():
 
         tab_addr.append((
             row["Numéro de l\'installation"]
-            ,row['Nom du lieu dit']+','+row['Numero de la voie']+","+row['Nom de la voie']
+            ,row['Nom du lieu dit']+','+row['Numero de la voie']+','+row['Nom de la voie']
             ,row['Code postal']
             ,row['Nom de la commune']
         ))
 
     try:
-        conn = sqlite3.connect(PROJECT_ROOT+'/data/database/db.db')
+        conn = sqlite3.connect(DB_FULLPATH)
         cursor = conn.cursor()
 
         # DELETE les donnees pour éviter les doublon

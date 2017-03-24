@@ -20,6 +20,8 @@ sys.dont_write_bytecode = True
 from packages.database.admin.get_data import dl_data
 from packages.database.admin.db_mgr import create_db
 from packages.database.admin.csv2db_installation import csv2db_installation
+from packages.database.admin.csv2db_equipement import csv2db_equipement
+from packages.database.admin.csv2db_activite import csv2db_activite
 from packages.rest.api.endpoint import launch_rest_api_service
 
 
@@ -27,4 +29,6 @@ from packages.rest.api.endpoint import launch_rest_api_service
 dl_data()
 create_db()
 csv2db_installation()
+csv2db_equipement()
+csv2db_activite()
 launch_rest_api_service()

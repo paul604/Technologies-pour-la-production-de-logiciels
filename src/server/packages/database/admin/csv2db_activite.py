@@ -1,8 +1,8 @@
 
 import csv, sqlite3
-from config import PROJECT_ROOT
+from config import PROJECT_ROOT, DB_FULLPATH
 
-def csv2db_activites(PROJECT_ROOT):
+def csv2db_activite():
     '''
     Mise-à-jour de la table activitées de la base de données en utilisant le fichier csv activites
     '''
@@ -21,7 +21,7 @@ def csv2db_activites(PROJECT_ROOT):
             ));
 
     try:
-        conn = sqlite3.connect(PROJECT_ROOT+'/data/database/db.db')
+        conn = sqlite3.connect(DB_FULLPATH)
         cursor = conn.cursor()
 
         # DELETE les donnees pour éviter les doublon

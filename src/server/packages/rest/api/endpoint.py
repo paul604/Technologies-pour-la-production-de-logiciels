@@ -29,17 +29,12 @@ def launch_rest_api_service(host='localhost', port=1234, debug=False):
 
 
 # toutes les installations
-@route('/data')
+@route('/data/installations')
 def get_i():
-	return None #TODO
+	return str(list(db2object())) #TODO
 
 
 # une installation
-@route('/data/<i_id:int>')
-def get_i(id):
+@route('/data/installations/<i_id:int>')
+def get_i(i_id):
 	return None #TODO
-
-
-@route('/')
-def blbl():
-	return PROJECT_ROOT

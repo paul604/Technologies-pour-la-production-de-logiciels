@@ -1,8 +1,8 @@
 
 import csv, sqlite3
-from config import PROJECT_ROOT
+from config import PROJECT_ROOT, DB_FULLPATH
 
-def csv2db_equipements(PROJECT_ROOT):
+def csv2db_equipement():
     '''
     update de la table equipements de la db en utilisant le fichier csv.
     '''
@@ -23,7 +23,7 @@ def csv2db_equipements(PROJECT_ROOT):
             ));
 
     try:
-        conn = sqlite3.connect(PROJECT_ROOT+'/data/database/db.db')
+        conn = sqlite3.connect(DB_FULLPATH)
         cursor = conn.cursor()
 
         # DELETE les donnees pour éviter les doublon
