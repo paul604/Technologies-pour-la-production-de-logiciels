@@ -1,8 +1,10 @@
 import sqlite3
-from config import PROJECT_ROOT, DB_FULLPATH
+from config import DB_FULLPATH
 from ..bean.Activite import Activite
 
-def db2object(a_id=-1):
+
+
+def a_get_object_by_id(a_id=-1):
     '''
     Retourne l'activite avec l'id passé en param ou si id == -1 retourne l'ensemble des activites contenus dans la base de données sous forme d'objets Activite
     '''

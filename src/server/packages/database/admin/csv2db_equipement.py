@@ -1,5 +1,5 @@
 
-import csv, sqlite3
+import csv, sqlite3, os
 from config import PROJECT_ROOT, DB_FULLPATH
 
 def csv2db_equipement():
@@ -8,7 +8,7 @@ def csv2db_equipement():
     '''
 
     #get le CSV
-    file = open(PROJECT_ROOT+'/data/csv/equipements.csv','r')
+    file = open(PROJECT_ROOT + os.path.sep + 'data' + os.path.sep + 'csv' + os.path.sep + 'equipements.csv','r')
     read = csv.DictReader(file)
 
     tab_equipements = []

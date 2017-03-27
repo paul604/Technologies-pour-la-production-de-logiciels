@@ -1,8 +1,8 @@
 import sqlite3
-from config import PROJECT_ROOT, DB_FULLPATH
+from config import DB_FULLPATH
 from ..bean.Equipement import Equipement
 
-def db2object(e_id=-1):
+def e_get_object_by_id(e_id=-1):
     '''
     Retourne l'equipements avec l'id passé en param ou si id == -1 retourne l'ensemble des equipements contenus dans la base de données sous forme d'objets Equipement
     '''

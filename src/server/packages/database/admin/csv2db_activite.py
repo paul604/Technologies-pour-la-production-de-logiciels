@@ -1,5 +1,5 @@
 
-import csv, sqlite3
+import csv, sqlite3, os
 from config import PROJECT_ROOT, DB_FULLPATH
 
 def csv2db_activite():
@@ -8,7 +8,7 @@ def csv2db_activite():
     '''
 
     #get le CSV
-    file = open(PROJECT_ROOT+'/data/csv/activites.csv','r')
+    file = open(PROJECT_ROOT + os.path.sep + 'data' + os.path.sep + 'csv' + os.path.sep + 'activites.csv','r')
     read = csv.DictReader(file)
 
     tab_activites = []
