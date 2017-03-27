@@ -32,3 +32,4 @@ csv2db_installation()
 csv2db_equipement()
 csv2db_activite()
 launch_rest_api_service()
+
