@@ -1,5 +1,5 @@
 import os, sqlite3
-from config import PROJECT_ROOT, DB_DIR, DB_FULLPATH
+from config import PROJECT_ROOT, DB_DIR, DB_FULLPATH, printerr
 
 
 
@@ -7,17 +7,22 @@ def create_db():
     '''
 	Crée la base de données
     '''
+
+    path1 = PROJECT_ROOT + os.path.sep + 'data'
+
     # on crée le dossier s'il n'existe pas
-    if not os.path.exists(PROJECT_ROOT + os.path.sep + 'data'):
-        os.mkdir(PROJECT_ROOT + os.path.sep + 'data');
+    if not os.path.exists(path1):
+        os.mkdir(path1);
+        printerr('directory created : "' + path1 + '"')
 
     # on crée le dossier s'il n'existe pas
     if not os.path.exists(DB_DIR):
         os.mkdir(DB_DIR)
+        printerr('directory created : "' + path1 + '"')
 
     try:
+        printerr('starting database creation')
         conn = sqlite3.connect(DB_FULLPATH)
-
         cursor = conn.cursor()
 
         #numero== id instal
@@ -31,14 +36,14 @@ def create_db():
         cursor.execute("""CREATE TABLE IF NOT EXISTS adresse(
             numero INTEGER PRIMARY KEY UNIQUE,
             adresse TEXT,
-            code_postal TEXT,
+            code_postal INTEGER,
             ville TEXT,
             FOREIGN KEY (numero) REFERENCES installation(numero)
             )
         """)
 
         #numero_equipements==EquipementId
-        cursor.execute("""CREATE TABLE IF NOT EXISTS equipements(
+        cursor.execute("""CREATE TABLE IF NOT EXISTS equipement(
             numero_equipements INTEGER PRIMARY KEY UNIQUE,
             nom TEXT,
             numero_installation INTEGER,
@@ -48,7 +53,7 @@ def create_db():
             )
         """)
 
-        cursor.execute("""CREATE TABLE IF NOT EXISTS activites(
+        cursor.execute("""CREATE TABLE IF NOT EXISTS activite(
             id INTEGER PRIMARY KEY,
             numero_activites INTEGER,
             numero_equipements INTEGER,
@@ -59,10 +64,16 @@ def create_db():
         """)
 
         conn.commit()
+        printerr('table "adresse" successfully created')
+        printerr('table "installation" successfully created')
+        printerr('table "equipement" successfully created')
+        printerr('table "activite" successfully created')
+        printerr('database successfully created')
     except Exception as e:
-        print (type(e))
-        print("-------------------------")
-        print (e)
+        printerr(type(e))
+        printerr('exception ocurred while creating database')
+        printerr("-------------------------")
+        printerr(e)
         conn.rollback()
     finally:
         conn.close()
@@ -78,9 +89,10 @@ def clear_db():
     '''
 
     try:
+        printerr('starting database emptying')
         conn = sqlite3.connect(DB_FULLPATH)
-
         cursor = conn.cursor()
+
         cursor.execute("""
             DROP TABLE IF EXISTS installation;
         """)
@@ -94,8 +106,12 @@ def clear_db():
             DROP TABLE IF EXISTS activites;
         """)
         conn.commit()
+        printerr('database emptied successfully')
     except Exception as e:
-        print (type(e))
         conn.rollback()
+        printerr(type(e))
+        printerr('exception occurred while emptying database')
+        printerr('==============')
+        printerr(e)
     finally:
         conn.close()

@@ -24,11 +24,20 @@ def list_of_objects2json(l):
 
 
 
+def list_of_tuples2json(l):
+	'''
+	Construit une string JSON à partir d'une liste de tuples
+	'''
+	return '{"data":['+','.join(['"'+' '.join([str(_) for _ in v])+'"' for v in l])+']}'
+
+
+
 def list2json(l):
 	'''
 	Construit une string JSON à partir d'une liste d'éléments
 	'''
-	return '{"data":['+','.join(['"'+' '.join([str(_) for _ in v])+'"' for v in l])+']}'
+	return '{"data":['+','.join(['"'+''.join([str(_) for _ in v])+'"' for v in l])+']}'
+
 
 
 def simplify(string):

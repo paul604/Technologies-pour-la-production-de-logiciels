@@ -9,7 +9,7 @@ C'est lui qui permet de récupérer le chemin absolu de la racine du projet.
 '''
 path_of_here = os.path.abspath(__file__)
 PROJECT_ROOT = os.path.normpath(os.path.join(os.path.sep, os.path.dirname(path_of_here), '..', '..'))
-
+sys.path.append(path_of_here) # rendre accessible
 
 
 
@@ -24,6 +24,8 @@ DB_FULLPATH = DB_DIR + os.path.sep + DB_FULL_NAME
 
 
 
-
- # rendre accessible
-sys.path.append(path_of_here)
+'''
+Définition de méthodes utilitaires globales
+'''
+def printerr(message):
+	sys.stderr.write(message+'\n')

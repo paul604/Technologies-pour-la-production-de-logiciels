@@ -14,13 +14,13 @@ def e_get_object_by_id(e_id=-1):
         if(e_id == -1):
             #get tout les equipements
             cur.execute("""SELECT *
-                FROM equipements
+                FROM equipement
                 """)
         else:
             #get l'equipements avec l'id
             cur.execute("""SELECT *
-                FROM equipements
-                WHERE equipements.numero_equipements=?
+                FROM equipement
+                WHERE equipement.numero_equipements=?
             """,  (e_id, ))
 
 

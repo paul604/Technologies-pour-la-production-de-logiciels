@@ -50,19 +50,52 @@ def launch_rest_api_service(host='localhost', port=1234, debug=False):
 
 @route('/data/villes')
 def get_villes():
+
+	'''
+	Récupère les villes matchant la recherche
+	'''
+	if request.query.ville != '':
+
+		results = []
+		ville_simplified_input = simplify(request.query.ville)
+		ville_db_name = ''
+		
+		for v in v_getall():
+			vstring = str(v[0])
+			if ville_simplified_input in simplify(vstring):
+				ville_db_name = vstring
+				results.append(ville_db_name)
+
+		return list2json(results)
+
 	'''
 	Récupère la liste des villes
 	'''
-	return list2json(v_getall())
+	return list_of_tuples2json(v_getall())
 
 
 
 @route('/data/codes_postaux')
 def get_codes_postaux():
+
+	'''
+	Récupère les codes postaux matchant la recherche
+	'''
+	# if request.query.cp != '':
+
+	# 	results = []		
+	# 	for v in v_getall():
+	# 		vstring = str(v[0])
+	# 		if ville_simplified_input in simplify(vstring):
+	# 			ville_db_name = vstring
+	# 			results.append(ville_db_name)
+
+		# return list2json(results)
+
 	'''
 	Récupère la liste des codes postaux
 	'''
-	return list2json(cp_getall())
+	return list_of_tuples2json(cp_getall())
 
 
 
@@ -71,7 +104,7 @@ def get_cp_and_v():
 	'''
 	Récupère la liste des villes et leurs codes postaux associés
 	'''
-	return list2json(cp_and_v_getall())
+	return list_of_tuples2json(cp_and_v_getall())
 
 
 

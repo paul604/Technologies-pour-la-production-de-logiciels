@@ -15,14 +15,14 @@ def a_get_object_by_id(a_id=-1):
         cur = conn.cursor()
         if(a_id == -1):
             #get toute les activites
-            cur.execute("""SELECT activites.id, activites.nom, activites.numero_activites ,activites.numero_equipements, activites.desc_act
+            cur.execute("""SELECT activite.id, activite.nom, activite.numero_activites ,activite.numero_equipements, activite.desc_act
                 FROM activites
                 """)
         else:
             #get l'activites avec l'id
-            cur.execute("""SELECT activites.id, activites.nom, activites.numero_activites ,activites.numero_equipements, activites.desc_act
-                FROM activites
-                WHERE activites.id=?
+            cur.execute("""SELECT activite.id, activite.nom, activite.numero_activites ,activite.numero_equipements, activite.desc_act
+                FROM activite
+                WHERE activite.id=?
             """, (a_id, ))
 
 

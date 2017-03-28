@@ -1,43 +1,47 @@
 
-import csv, sqlite3, os
-from config import PROJECT_ROOT, DB_FULLPATH
+import csv, sqlite3, os, sys
+from config import PROJECT_ROOT, DB_FULLPATH, DB_FULL_NAME, printerr
 
-def csv2db_activite():
+def csv2db_activite(update = False):
     '''
-    Mise-à-jour de la table activitées de la base de données en utilisant le fichier csv activites
+    Le paramètre d'override update permet d'activer ou non l'écrasement du contenu actuel de la base de donnée par celui du fichier CSV
+    Mettre à True pour mettre-à-jour
     '''
 
-    #get le CSV
-    file = open(PROJECT_ROOT + os.path.sep + 'data' + os.path.sep + 'csv' + os.path.sep + 'activites.csv','r')
-    read = csv.DictReader(file)
+    if update:
+        #get le CSV
+        file_full_name = 'activites.csv'
+        file_path = PROJECT_ROOT + os.path.sep + 'data' + os.path.sep + 'csv' + os.path.sep + file_full_name
+        file = open(file_path,'r')
+        read = csv.DictReader(file)
 
-    tab_activites = []
-    # foreach sur le CSV et ajout dans un tableau pour ajout dans bdd
-    for row in read:
-        tab_activites.append((row["ActCode"]
-            ,row['EquipementId']
-            ,row['ActNivLib']
-            ,row['ActLib']
-            ));
+        tab_activites = []
+        # foreach sur le CSV et ajout dans un tableau pour ajout dans bdd
+        for row in read:
+            tab_activites.append((row["ActCode"]
+                ,row['EquipementId']
+                ,row['ActNivLib']
+                ,row['ActLib']
+                ));
 
-    try:
-        conn = sqlite3.connect(DB_FULLPATH)
-        cursor = conn.cursor()
+        try:
+            conn = sqlite3.connect(DB_FULLPATH)
+            cursor = conn.cursor()
 
-        # DELETE les donnees pour éviter les doublon
-        cursor.execute("""
-            DELETE FROM activites;
-        """)
+            # DELETE les donnees pour éviter les doublon
+            cursor.execute("""
+                DELETE FROM activites;
+            """)
 
-        # add les data du tableau tab_activites dans la bdd 
-        cursor.executemany('INSERT INTO activites(numero_activites, numero_equipements, desc_act, nom) VALUES (?,?,?,?)', tab_activites)
-
-        conn.commit()
-
-    except Exception as e:
-        print (type(e))
-        print("-------------------------")
-        print (e)
-        conn.rollback()
-    finally:
-        conn.close()
+            # add les data du tableau tab_activites dans la bdd 
+            cursor.executemany('INSERT INTO activites(numero_activites, numero_equipements, desc_act, nom) VALUES (?,?,?,?)', tab_activites)
+            conn.commit()
+            printerr(file_full_name + ' stored successfully into database ' + DB_FULL_NAME)
+        except Exception as e:
+            conn.rollback()
+            printerr(type(e))
+            printerr('exception occured while attempted to store ' + file_full_name + ' into database ' + DB_FULL_NAME)
+            printerr('==============')
+            printerr(e)
+        finally:
+            conn.close()
