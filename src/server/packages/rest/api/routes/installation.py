@@ -29,12 +29,10 @@ def i_route():
 
 		results = set()
 		ville_simplified_input = simplify(request.query.ville)
-		ville_db_name = ''
 		
 		for v in v_getall():
-			vstring = str(v[0])
-			if ville_simplified_input in simplify(vstring):
-				ville_db_name = vstring
+			ville_db_name = str(v[0])
+			if ville_simplified_input in simplify(ville_db_name):
 				results.add(set_of_objects2json(i_get_object_by_ville(ville_db_name)))
 
 		return results

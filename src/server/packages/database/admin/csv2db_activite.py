@@ -29,12 +29,10 @@ def csv2db_activite(update = False):
             cursor = conn.cursor()
 
             # DELETE les donnees pour éviter les doublon
-            cursor.execute("""
-                DELETE FROM activites;
-            """)
+            cursor.execute("""DELETE FROM activite;""")
 
             # add les data du tableau tab_activites dans la bdd 
-            cursor.executemany('INSERT INTO activites(numero_activites, numero_equipements, desc_act, nom) VALUES (?,?,?,?)', tab_activites)
+            cursor.executemany('INSERT INTO activite(numero_activites, numero_equipements, desc_act, nom) VALUES (?,?,?,?)', tab_activites)
             conn.commit()
             printerr(file_full_name + ' stored successfully into database ' + DB_FULL_NAME)
         except Exception as e:

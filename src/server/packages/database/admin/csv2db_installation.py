@@ -36,12 +36,8 @@ def csv2db_installation(update = False):
             cursor = conn.cursor()
 
             # DELETE les donnees pour éviter les doublon
-            cursor.execute("""
-                DELETE FROM installation;
-            """)
-            cursor.execute("""
-                DELETE FROM adresse;
-            """)
+            cursor.execute("""DELETE FROM installation;""")
+            cursor.execute("""DELETE FROM adresse;""")
 
             # add les data du tableau tab_installation et tab_addr dans la bdd 
             cursor.executemany('INSERT INTO installation VALUES (?,?)', tab_installation)

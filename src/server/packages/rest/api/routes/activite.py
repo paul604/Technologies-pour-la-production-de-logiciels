@@ -1,4 +1,4 @@
-from ....database.dao.dao.dao_equipement import *
+from ....database.dao.dao.dao_activite import *
 from ...lib.bottle import route, request
 from ...lib.utils import *
 
@@ -7,6 +7,21 @@ from ...lib.utils import *
 # -------------------------------------------------------- activitées
 @route('/data/activites')
 def a_route():
+	'''
+	Récupère les activitées matchant la recherche
+	'''
+	if request.query.activite != '':
+
+		results = set()
+		activite_simplified_input = simplify(request.query.activite)
+		
+		for a in a_get_object_by_id():
+			if activite_simplified_input in simplify(a.nom):
+				results.add(a)
+
+		return set_of_objects2json(results)
+
+
 	'''
 	Récupère toutes les activitées ou une activité en particulier si l'id est spécifié
 	'''

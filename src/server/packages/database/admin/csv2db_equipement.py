@@ -30,13 +30,11 @@ def csv2db_equipement(update = False):
             conn = sqlite3.connect(DB_FULLPATH)
             cursor = conn.cursor()
 
-            # DELETE les donnees pour éviter les doublon
-            cursor.execute("""
-                DELETE FROM equipements;
-            """)
+            # DELETE les données afin d'éviter les doublons
+            cursor.execute("""DELETE FROM equipement;""")
 
-            # add les data du tableau tab_equipements dans la bdd 
-            cursor.executemany('INSERT INTO equipements VALUES (?,?,?,?,?)', tab_equipements)
+            # add les data du tableau tab_equipements dans la bdd
+            cursor.executemany('INSERT INTO equipement VALUES (?,?,?,?,?)', tab_equipements)
 
             conn.commit()
             printerr(file_full_name + ' stored successfully into database ' + DB_FULL_NAME)

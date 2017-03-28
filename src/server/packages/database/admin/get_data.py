@@ -38,16 +38,16 @@ def dl_data(override = False):
 
 	# ----------------- on y télécharge les fichiers CSV s'ils ny sont pas présents ou que l'écrasement a été spécifié
 	if override or not os.path.isfile(i_path):
-		printerr('fetching "installations" data at "' + i_url + '"')
+		printerr('fetching "installations" data from "' + i_url + '"')
 		urllib.request.urlretrieve(i_url, i_path)
-		printerr('file "installations.csv" created at "' + i_path + '"')
+		printerr('file "installations.csv" created as "' + i_path + '"')
 
 	if override or not os.path.isfile(e_path):
-		printerr('fetching "equipements" data at "' + e_url + '"')
+		printerr('fetching "equipements" data from "' + e_url + '"')
 		urllib.request.urlretrieve(e_url, e_path)
-		printerr('file "equipements.csv" created at "' + e_path + '"')
+		printerr('file "equipements.csv" created as "' + e_path + '"')
 	
 	if override or not os.path.isfile(a_path):
-		printerr('fetching "activites" data at "' + a_url + '"')
+		printerr('fetching "activites" data from "' + a_url + '"')
 		urllib.request.urlretrieve(a_url, a_path)
-		printerr('file "activites.csv" created at "' + a_path + '"')
+		printerr('file "activites.csv" created as "' + a_path + '"')
