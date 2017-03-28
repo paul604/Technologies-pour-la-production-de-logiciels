@@ -66,12 +66,12 @@ def get_codes_postaux():
 
 
 
-@route('/data/v_et_cp')
-def get_v_and_cp():
+@route('/data/cp_et_v')
+def get_cp_and_v():
 	'''
 	Récupère la liste des villes et leurs codes postaux associés
 	'''
-	return list2json(v_and_cp_getall())
+	return list2json(cp_and_v_getall())
 
 
 

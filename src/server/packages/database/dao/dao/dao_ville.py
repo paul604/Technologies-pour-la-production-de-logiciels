@@ -45,21 +45,21 @@ def cp_getall():
 
 
 
-def v_and_cp_getall():
+def cp_and_v_getall():
     '''
     Retourne un set des codes postaux existants en base
     '''
-    v_and_cp = set()
+    cp_and_v = set()
     try:
         conn = sqlite3.connect(DB_FULLPATH)
         cur = conn.cursor()
-        cur.execute("""SELECT ville,code_postal FROM adresse""")
+        cur.execute("""SELECT code_postal,ville FROM adresse""")
         for v in cur.fetchall():
-            v_and_cp.add(v)
+            cp_and_v.add(v)
     except Exception as e:
         print (type(e))
         print("-------------------------")
         print (e)
     finally:
         conn.close()
-    return v_and_cp
+    return cp_and_v
