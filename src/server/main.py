@@ -4,8 +4,8 @@
 
 
 '''
-Contient l'exécution séquentielle des différentes fonctions.
-Permet de tester le bon enchaînement des différents appels.
+Contient l'exécution séquentielle des différentes fonctions
+Permet de tester le bon enchaînement des différents appels
 '''
 
 
