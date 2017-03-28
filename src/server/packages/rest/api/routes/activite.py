@@ -10,16 +10,16 @@ def a_route():
 	'''
 	Récupère les activitées matchant la recherche
 	'''
-	if request.query.activite != '':
+	if request.query.suggestions != '':
 
 		results = set()
-		activite_simplified_input = simplify(request.query.activite)
+		activite_simplified_input = simplify(request.query.suggestions)
 		
 		for a in a_get_object_by_id():
 			if activite_simplified_input in simplify(a.nom):
-				results.add(a)
+				results.add(a.nom) # results étant un set, les doublons s'éliminent d'eux-mêmes
 
-		return set_of_objects2json(results)
+		return list2json(list(results))
 
 
 	'''
@@ -27,8 +27,6 @@ def a_route():
 	'''
 	if request.query.numero != '':
 		return set_of_objects2json(a_get_object_by_num_act(request.query.numero))
-
-
 
 
 	'''
