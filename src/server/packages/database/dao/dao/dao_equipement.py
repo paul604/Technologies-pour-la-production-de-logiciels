@@ -1,6 +1,7 @@
 import sqlite3
 from config import DB_FULLPATH
 from ..bean.Equipement import Equipement
+from .activite import a_get_num_from_nom
 
 def e_get_object_by_id(e_id=-1):
     '''

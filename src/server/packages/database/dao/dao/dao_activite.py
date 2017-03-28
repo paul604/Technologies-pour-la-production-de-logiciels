@@ -50,3 +50,23 @@ def a_get_object_by_num_act(num_act):
     finally:
         conn.close()
     return activites
+
+
+
+def a_get_num(nom):
+    '''
+    Récupère le `numero_activite` associé au nom donné en paramètre
+    '''
+    # num_act = 0
+    # try:
+    #     conn = sqlite3.connect(DB_FULLPATH)
+    #     cur = conn.cursor()
+    #     cur.execute("""SELECT a.numero_activites FROM activite AS a WHERE a.nom=?""", [nom])
+    #     num_act = cur.fetchone()
+    # except Exception as e:
+    #     printerr(type(e))
+    #     printerr("--------------")
+    #     printerr(e)
+    # finally:
+    #     conn.close()
+    # return num_act

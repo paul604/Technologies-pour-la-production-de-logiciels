@@ -34,7 +34,7 @@ def csv2db_activite(update = False):
             # add les data du tableau tab_activites dans la bdd 
             cursor.executemany('INSERT INTO activite(numero_activites, numero_equipements, desc_act, nom) VALUES (?,?,?,?)', tab_activites)
             conn.commit()
-            printerr(file_full_name + ' stored successfully into database ' + DB_FULL_NAME)
+            printerr(file_full_name + ' dumped successfully into database ' + DB_FULL_NAME)
         except Exception as e:
             conn.rollback()
             printerr(type(e))

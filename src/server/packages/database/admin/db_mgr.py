@@ -54,6 +54,7 @@ def create_db():
             """)
 
             cursor.execute("""CREATE TABLE IF NOT EXISTS activite(
+            
                 id INTEGER PRIMARY KEY,
                 numero_activites INTEGER,
                 numero_equipements INTEGER,

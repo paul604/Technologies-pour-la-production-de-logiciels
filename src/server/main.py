@@ -28,8 +28,8 @@ from packages.rest.api.endpoint import launch_rest_api_service
 
 dl_data()
 create_db()
-csv2db_installation()
-csv2db_equipement()
-csv2db_activite()
+csv2db_installation(True)
+csv2db_equipement(True)
+csv2db_activite(True)
 launch_rest_api_service()
 

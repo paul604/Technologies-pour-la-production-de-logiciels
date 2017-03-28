@@ -44,7 +44,7 @@ def csv2db_installation(update = False):
             cursor.executemany('INSERT INTO adresse VALUES (?,?,?,?)', tab_addr)
 
             conn.commit()
-            printerr(file_full_name + ' stored successfully into database ' + DB_FULL_NAME)
+            printerr(file_full_name + ' dumped successfully into database ' + DB_FULL_NAME)
         except Exception as e:
             conn.rollback()
             printerr(type(e))

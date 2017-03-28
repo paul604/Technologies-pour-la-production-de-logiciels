@@ -33,3 +33,13 @@ def a_route():
 	Récupère toutes les activitées ou une activité en particulier si l'id est spécifié
 	'''
 	return set_of_objects2json(a_get_object_by_id(request.query.id or -1))
+
+
+
+def a_get_num_from_nom(nom):
+	'''
+	Récupère le numéro des activitées en connaissant son nom exact
+	@private Méthode interne à l'API
+	'''
+	if request.query.activite != '':
+		return a_get_num(nom)
