@@ -2,7 +2,7 @@
 import csv, sqlite3, os
 from config import PROJECT_ROOT, DB_FULLPATH, DB_FULL_NAME, printerr
 
-def csv2db_installation(update = False):
+def csv2db_installation(update):
     '''
     Le paramètre d'override update permet d'activer ou non l'écrasement du contenu actuel de la base de donnée par celui du fichier CSV
     Mettre à True pour mettre-à-jour
@@ -44,7 +44,7 @@ def csv2db_installation(update = False):
             cursor.executemany('INSERT INTO adresse VALUES (?,?,?,?)', tab_addr)
 
             conn.commit()
-            printerr(file_full_name + ' dumped successfully into database ' + DB_FULL_NAME)
+            printerr(file_full_name + ' dumped successfully into database ' + DB_FULL_NAME + ' (feel free to set `BOOL_IMPORT_CSV_ON_LAUNCH` to `False` in "src/server/config.py" to disable this behaviour)')
         except Exception as e:
             conn.rollback()
             printerr(type(e))

@@ -2,7 +2,7 @@
 import csv, sqlite3, os, sys
 from config import PROJECT_ROOT, DB_FULLPATH, DB_FULL_NAME, printerr
 
-def csv2db_activite(update = False):
+def csv2db_activite(update):
     '''
     Le paramètre d'override update permet d'activer ou non l'écrasement du contenu actuel de la base de donnée par celui du fichier CSV
     Mettre à True pour mettre-à-jour
@@ -34,7 +34,7 @@ def csv2db_activite(update = False):
             # add les data du tableau tab_activites dans la bdd 
             cursor.executemany('INSERT INTO activite(numero_activites, numero_equipements, desc_act, nom) VALUES (?,?,?,?)', tab_activites)
             conn.commit()
-            printerr(file_full_name + ' dumped successfully into database ' + DB_FULL_NAME)
+            printerr(file_full_name + ' dumped successfully into database ' + DB_FULL_NAME + ' (feel free to set `BOOL_IMPORT_CSV_ON_LAUNCH` to `False` in "src/server/config.py" to disable this behaviour)')
         except Exception as e:
             conn.rollback()
             printerr(type(e))

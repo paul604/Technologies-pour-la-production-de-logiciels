@@ -53,20 +53,20 @@ def a_get_object_by_num_act(num_act):
 
 
 
-def a_get_num(nom):
+def a_get_nums(nom):
     '''
-    Récupère le `numero_activite` associé au nom donné en paramètre
+    Récupère un set des `numero_equipements` en connaissant le `nom` exact d'une activité
     '''
-    # num_act = 0
-    # try:
-    #     conn = sqlite3.connect(DB_FULLPATH)
-    #     cur = conn.cursor()
-    #     cur.execute("""SELECT a.numero_activites FROM activite AS a WHERE a.nom=?""", [nom])
-    #     num_act = cur.fetchone()
-    # except Exception as e:
-    #     printerr(type(e))
-    #     printerr("--------------")
-    #     printerr(e)
-    # finally:
-    #     conn.close()
-    # return num_act
+    nums_equips = set()
+    try:
+        conn = sqlite3.connect(DB_FULLPATH)
+        cur = conn.cursor()
+        cur.execute("""SELECT a.numero_equipements FROM activite AS a WHERE a.nom=?""", [nom])
+        nums_equips = cur.fetchall()
+    except Exception as e:
+        printerr(type(e))
+        printerr("--------------")
+        printerr(e)
+    finally:
+        conn.close()
+    return nums_equips

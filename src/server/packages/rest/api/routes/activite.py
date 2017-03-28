@@ -4,11 +4,11 @@ from ...lib.utils import *
 
 
 
-# -------------------------------------------------------- activitées
+# -------------------------------------------------------- activités
 @route('/data/activites')
 def a_route():
 	'''
-	Récupère les activitées matchant la recherche
+	Récupère les activités matchant la recherche
 	'''
 	if request.query.suggestions != '':
 
@@ -23,23 +23,13 @@ def a_route():
 
 
 	'''
-	Récupère les activitées d'un numéro `numero` donné en GET
+	Récupère les activités d'un numéro `numero` donné en GET
 	'''
 	if request.query.numero != '':
 		return set_of_objects2json(a_get_object_by_num_act(request.query.numero))
 
 
 	'''
-	Récupère toutes les activitées ou une activité en particulier si l'id est spécifié
+	Récupère toutes les activités ou une activité en particulier si l'id est spécifié
 	'''
 	return set_of_objects2json(a_get_object_by_id(request.query.id or -1))
-
-
-
-def a_get_num_from_nom(nom):
-	'''
-	Récupère le numéro des activitées en connaissant son nom exact
-	@private Méthode interne à l'API
-	'''
-	if request.query.activite != '':
-		return a_get_num(nom)

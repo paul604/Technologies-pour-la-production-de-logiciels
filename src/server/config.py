@@ -25,6 +25,13 @@ DB_FULLPATH = DB_DIR + os.path.sep + DB_FULL_NAME
 
 
 '''
+Définition de constantes de configuration de lancement
+'''
+BOOL_IMPORT_CSV_ON_LAUNCH = True # mettre à `False` après un premier lancement réussi pour ne pas dump inutilement les CSV dans la DB à chaque lancement
+
+
+
+'''
 Définition de méthodes utilitaires globales
 '''
 def printerr(message):
