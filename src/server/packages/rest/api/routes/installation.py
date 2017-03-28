@@ -1,4 +1,5 @@
 from ....database.dao.dao.dao_installation import *
+from ....database.dao.dao.dao_ville import *
 from ...lib.bottle import route, request
 from ...lib.utils import *
 
@@ -32,7 +33,7 @@ def i_route():
 		
 		for v in v_getall():
 			ville_db_name = str(v[0])
-			if ville_simplified_input in simplify(ville_db_name):
+			if ville_simplified_input == simplify(ville_db_name):
 				results.add(set_of_objects2json(i_get_object_by_ville(ville_db_name)))
 
 		return results
@@ -46,7 +47,7 @@ def i_route():
 		
 		for cp in cp_getall():
 			cpstring = str(cp[0])
-			if request.query.cp in cpstring:
+			if request.query.cp in cpstring: # le `in` ajotue de la souplesse (ex: on se souvient seulement de la fin du code postal)
 				results.add(set_of_objects2json(i_get_object_by_cp(cpstring)))
 
 		return results

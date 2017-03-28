@@ -23,6 +23,15 @@ def a_route():
 
 
 	'''
+	Récupère les activitées d'un numéro `numero` donné en GET
+	'''
+	if request.query.numero != '':
+		return set_of_objects2json(a_get_object_by_num_act(request.query.numero))
+
+
+
+
+	'''
 	Récupère toutes les activitées ou une activité en particulier si l'id est spécifié
 	'''
 	return set_of_objects2json(a_get_object_by_id(request.query.id or -1))

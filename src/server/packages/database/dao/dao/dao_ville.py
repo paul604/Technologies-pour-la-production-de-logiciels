@@ -74,7 +74,7 @@ def cp_getville(cp):
     try:
         conn = sqlite3.connect(DB_FULLPATH)
         cur = conn.cursor()
-        cur.execute("""SELECT ville FROM adresse WHERE adresse.code_postal=?""", [cp])
+        cur.execute("""SELECT ville FROM adresse AS a WHERE a.code_postal=?""", [cp])
         for v in cur.fetchall():
             villes.add(v)
     except Exception as e:

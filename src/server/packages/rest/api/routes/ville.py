@@ -15,10 +15,10 @@ def v_route():
 	'''
 	Récupère les villes matchant la recherche
 	'''
-	if request.query.ville != '':
+	if request.query.suggestions != '':
 
 		results = []
-		ville_simplified_input = simplify(request.query.ville)
+		ville_simplified_input = simplify(request.query.suggestions)
 		
 		for v in v_getall():
 			ville_db_name = str(v[0])
