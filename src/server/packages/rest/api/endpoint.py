@@ -1,8 +1,8 @@
 from ..lib.bottle import run
-from .installation import i_route
-from .equipement import e_route
-from .activite import a_route
-from .ville import *
+from .routes.installation import i_route
+from .routes.equipement import e_route
+from .routes.activite import a_route
+from .routes.ville import *
 
 
 

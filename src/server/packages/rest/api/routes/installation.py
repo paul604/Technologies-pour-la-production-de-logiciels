@@ -1,6 +1,6 @@
-from ...database.dao.dao.dao_installation import *
-from ..lib.bottle import route, request
-from ..lib.utils import *
+from ....database.dao.dao.dao_installation import *
+from ...lib.bottle import route, request
+from ...lib.utils import *
 
 
 
