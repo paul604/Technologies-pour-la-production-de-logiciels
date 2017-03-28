@@ -63,3 +63,24 @@ def cp_and_v_getall():
     finally:
         conn.close()
     return cp_and_v
+
+
+
+def cp_getville(cp):
+    '''
+    Retourne les villes correspondant à un code postal
+    '''
+    villes = set()
+    try:
+        conn = sqlite3.connect(DB_FULLPATH)
+        cur = conn.cursor()
+        cur.execute("""SELECT ville FROM adresse WHERE adresse.code_postal=?""", [cp])
+        for v in cur.fetchall():
+            villes.add(v)
+    except Exception as e:
+        print (type(e))
+        print("-------------------------")
+        print (e)
+    finally:
+        conn.close()
+    return villes

@@ -1,5 +1,5 @@
 '''
-Fournit un ensemble de méthodes utilitaires
+Fournit un ensemble de méthodes utilitaires relatives à l'export en JSON
 '''
 
 
@@ -20,7 +20,7 @@ def list_of_objects2json(l):
 	'''
 	Construit une string JSON à partir d'une liste d'objets sérialisables
 	'''
-	return '{"data":['+','.join(l)+']}'
+	return to_json('['+','.join(l)+']')
 
 
 
@@ -28,7 +28,7 @@ def list_of_tuples2json(l):
 	'''
 	Construit une string JSON à partir d'une liste de tuples
 	'''
-	return '{"data":['+','.join(['"'+' '.join([str(_) for _ in v])+'"' for v in l])+']}'
+	return to_json('['+','.join(['"'+' '.join([str(_) for _ in v])+'"' for v in l])+']')
 
 
 
@@ -36,7 +36,15 @@ def list2json(l):
 	'''
 	Construit une string JSON à partir d'une liste d'éléments
 	'''
-	return '{"data":['+','.join(['"'+''.join([str(_) for _ in v])+'"' for v in l])+']}'
+	return to_json('['+','.join(['"'+''.join([str(_) for _ in v])+'"' for v in l])+']')
+
+
+
+def to_json(s):
+	'''
+	Termine la construction JSON (englobement sous une node data que l'on crée ici)
+	'''
+	return '{"data":' + s + '}'
 
 
 

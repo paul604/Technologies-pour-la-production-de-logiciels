@@ -4,6 +4,9 @@ from ...lib.utils import *
 
 
 
+# NB: une ville peut avoir n codes postaux ; un code postal peut avoir n villes
+# code_postal <===c'est=une=relation===> ville
+
 
 
 # -------------------------------------------------------- villes
@@ -27,6 +30,12 @@ def v_route():
 		return list2json(results)
 
 	'''
+	Récupère les villes associées à un code postal
+	'''
+	if request.query.cp != '':
+		return list2json(cp_getville(request.query.cp))
+
+	'''
 	Récupère la liste des villes
 	'''
 	return list_of_tuples2json(v_getall())
@@ -38,21 +47,6 @@ def v_route():
 # -------------------------------------------------------- codes postaux
 @route('/data/codes_postaux')
 def cp_route():
-	'''
-	Récupère les codes postaux matchant la recherche
-	'''
-	#TODO
-	# if request.query.cp != '':
-
-	# 	results = []		
-	# 	for v in v_getall():
-	# 		vstring = str(v[0])
-	# 		if ville_simplified_input in simplify(vstring):
-	# 			ville_db_name = vstring
-	# 			results.append(ville_db_name)
-
-		# return list2json(results)
-
 	'''
 	Récupère la liste des codes postaux
 	'''
