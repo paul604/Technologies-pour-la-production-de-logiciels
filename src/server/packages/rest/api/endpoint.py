@@ -1,4 +1,5 @@
-from ..lib.bottle import run
+from ..lib.cross_origin_resource_sharing_plugin import EnableCors
+from ..lib.bottle import app, run
 
 
 
@@ -22,4 +23,5 @@ def launch_rest_api_service(host='localhost', port=1234, debug=False):
 	'''
 	Permet le lancement du serveur bottle
 	'''
+	app().install(EnableCors())
 	run(host=host, port=port, debug=debug)
