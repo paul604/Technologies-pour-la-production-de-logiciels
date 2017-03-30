@@ -19,9 +19,9 @@ http://bottlepy.org/docs/dev/tutorial.html
 
 
 
-def launch_rest_api_service(host='localhost', port=1234, debug=False):
+def launch_rest_api_service(host='localhost', port=1234):
 	'''
 	Permet le lancement du serveur bottle
 	'''
 	app().install(EnableCors())
-	run(host=host, port=port, debug=debug)
+	run(host=host, port=port)
