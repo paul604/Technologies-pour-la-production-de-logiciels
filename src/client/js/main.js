@@ -16,7 +16,6 @@ function autocomplete(){
     //ville
     var champ_ville = $("#ville");
 
-    console.log(champ_ville.val());
     champ_ville.autocomplete({
         minLength: 1,
         source:function(ville, response){
@@ -50,13 +49,7 @@ function getVille(ville, response){
       type : 'get',
       dataType : 'json',
       data : outData,
-      success : function(out, statut){
-        var tab = [];
-        $.each(out, function (i, val) {
-          tab[tab.length]=val;
-        });
-        response(tab);
-      }
+      success : function(out, statut){ response(out.data); }
   });
 };
 //////////////////////////////////////////
@@ -71,12 +64,6 @@ function getActivite(activite, response){
         type : 'get',
         dataType : 'json',
         data : outData,
-        success : function(out, statut){
-          var tab = [];
-          $.each(out, function (i, val) {
-            tab[tab.length]=val;
-          });
-          response(tab);
-        }
+        success : function(out, statut){ response(out.data); }
     });
 }

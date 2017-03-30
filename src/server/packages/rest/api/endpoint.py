@@ -9,6 +9,7 @@ from .routes.installation import i_route
 from .routes.equipement import e_route
 from .routes.activite import a_route
 from .routes.ville import *
+from .routes.index import *
 
 
 
