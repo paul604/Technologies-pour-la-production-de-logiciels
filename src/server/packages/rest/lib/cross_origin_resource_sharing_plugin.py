@@ -1,4 +1,4 @@
-from .bottle import response
+from .bottle import response, request
 
 
 
@@ -21,7 +21,7 @@ class EnableCors(object):
             response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, OPTIONS'
             response.headers['Access-Control-Allow-Headers'] = 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
 
-            if bottle.request.method != 'OPTIONS':
+            if request.method != 'OPTIONS':
                 # actual request; reply with the actual response
                 return fn(*args, **kwargs)
 
