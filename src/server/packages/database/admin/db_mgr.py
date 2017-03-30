@@ -1,5 +1,5 @@
 import os, sqlite3
-from config import PROJECT_ROOT, DB_DIR, DB_FULLPATH, printerr
+from config import PROJECT_ROOT, DB_DIR, DB_FULLPATH, printerr, printex
 
 
 
@@ -71,10 +71,8 @@ def create_db():
             printerr('table "activite" successfully created')
             printerr('database successfully created')
         except Exception as e:
-            printerr(type(e))
             printerr('exception ocurred while creating database')
-            printerr("-------------------------")
-            printerr(e)
+            printex(e)
             conn.rollback()
         finally:
             conn.close()
@@ -111,9 +109,7 @@ def clear_db():
             printerr('database emptied successfully')
         except Exception as e:
             conn.rollback()
-            printerr(type(e))
             printerr('exception occurred while emptying database')
-            printerr('==============')
-            printerr(e)
+            printex(e)
         finally:
             conn.close()

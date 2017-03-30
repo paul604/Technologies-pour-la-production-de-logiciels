@@ -1,5 +1,5 @@
 import sqlite3
-from config import DB_FULLPATH
+from config import DB_FULLPATH, printex
 
 
 
@@ -15,9 +15,7 @@ def v_getall():
         for v in cur.fetchall():
             villes.add(v)
     except Exception as e:
-        print (type(e))
-        print("-------------------------")
-        print (e)
+        printex(e)
     finally:
         conn.close()
     return villes
@@ -36,9 +34,7 @@ def cp_getall():
         for v in cur.fetchall():
             cps.add(v)
     except Exception as e:
-        print (type(e))
-        print("-------------------------")
-        print (e)
+        printex(e)
     finally:
         conn.close()
     return cps
@@ -57,9 +53,7 @@ def cp_and_v_getall():
         for v in cur.fetchall():
             cp_and_v.add(v)
     except Exception as e:
-        print (type(e))
-        print("-------------------------")
-        print (e)
+        printex(e)
     finally:
         conn.close()
     return cp_and_v
@@ -78,9 +72,7 @@ def cp_getville(cp):
         for v in cur.fetchall():
             villes.add(v)
     except Exception as e:
-        print (type(e))
-        print("-------------------------")
-        print (e)
+        printex(e)
     finally:
         conn.close()
     return villes

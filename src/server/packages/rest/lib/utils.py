@@ -4,7 +4,7 @@ Fournit un ensemble de méthodes utilitaires relatives à l'export en JSON
 
 
 
-import json, unicodedata
+import json, unicodedata, re
 
 
 
@@ -50,6 +50,7 @@ def to_json(s):
 
 def simplify(string):
 	'''
-	Enlève les caractères utf8 ainsi que les accents et les remplace par leurs équivalents ascii
+	Remplace les caractères accentués utf8 par leurs équivalents ascii.
+	Remplace aussi les tirets et les underscore par des espaces.
 	'''
-	return ''.join((c for c in unicodedata.normalize('NFD', string.lower()) if unicodedata.category(c) != 'Mn'))
+	return ''.join(re.sub('[-_]',' ',''.join(c for c in unicodedata.normalize('NFD', string.lower()) if unicodedata.category(c) != 'Mn')))

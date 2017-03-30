@@ -9,6 +9,23 @@ from ...lib.utils import *
 @route('/data/equipements')
 def e_route():
 	'''
+	Récupère tous les équipements d'une ville donnée permettant de pratiquer une activité donnée
+	'''
+	if request.query.ville != '' and request.query.activite != '' :
+		
+		results = set()
+		ville_simplified_input = simplify(request.query.ville)
+		activite_simplified_input = simplify(request.query.activite)
+		
+		for eaa in e_get_addr_act():
+			ville_db_name = eaa[1].ville
+			activite_db_name = eaa[2].nom
+			if ville_simplified_input in simplify(ville_db_name) and activite_simplified_input in simplify(activite_db_name):
+				results.add(eaa[2])
+
+		return set_of_objects2json(results)
+
+	'''
 	Liste les équipements où l'on peut pratiquer l'activité dont le nom exact (`request.query.activite`) est passé en GET
 	'''	
 	if request.query.activite != '':
