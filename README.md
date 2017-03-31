@@ -10,7 +10,7 @@ cd technologies-pour-la-production-de-logiciels/src/server/
 ```
 Puis 2 possibilités :
 * [exemple de communication directe avec le service web de l'API](http://localhost:1234/data/installations?ville=ancenis)
-* [via la page web dédiée](http://localhost)
+* [via la page web dédiée](http://localhost:1234)
 
 
 ### Collaborators
