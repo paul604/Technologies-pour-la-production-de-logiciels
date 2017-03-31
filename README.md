@@ -2,13 +2,13 @@
 Module M4105C du DUT Informatique à l'IUT de Nantes 
 
 
-### Pour tester
-```
+### Envie de tester ? C'est très simple !
+```bash
 git clone https://github.com/paul604/technologies-pour-la-production-de-logiciels
 cd technologies-pour-la-production-de-logiciels/src/server/
 ./main.py
 ```
-Puis 2 possibilités :
+Une fois le serveur bottle lancé, 2 possibilités :
 * [exemple de communication directe avec le service web de l'API](http://localhost:1234/data/installations?ville=ancenis)
 * [via la page web dédiée](http://localhost:1234)
 
