@@ -1,15 +1,15 @@
-from ..lib.cross_origin_resource_sharing_plugin import EnableCors
-from ..lib.bottle import app, run
+from ...lib.cross_origin_resource_sharing_plugin import EnableCors
+from ...lib.bottle import app, run
 
 
 
 # /!\ ne pas retirer /!\
 # imports servant à charger les routes
-from .routes.installation import i_route
-from .routes.equipement import e_route
-from .routes.activite import a_route
-from .routes.ville import *
-from .routes.index import *
+from ..routes.installation import i_route
+from ..routes.equipement import e_route
+from ..routes.activite import a_route
+from ..routes.ville import *
+from ..routes.index import *
 
 
 
