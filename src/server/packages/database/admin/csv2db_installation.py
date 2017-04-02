@@ -12,8 +12,8 @@ def csv2db_installation(update):
         #get le CSV
         file_full_name = 'installations.csv'
         file_path = PROJECT_ROOT + os.path.sep + 'data' + os.path.sep + 'csv' + os.path.sep + file_full_name
-        file = open(file_path,'r')
-        read = csv.DictReader(file)
+        file_I = open(file_path,'r', encoding="utf8")
+        read = csv.DictReader(file_I)
 
         tab_installation = []
         tab_addr = []
@@ -39,7 +39,7 @@ def csv2db_installation(update):
             cursor.execute("""DELETE FROM installation;""")
             cursor.execute("""DELETE FROM adresse;""")
 
-            # add les data du tableau tab_installation et tab_addr dans la bdd 
+            # add les data du tableau tab_installation et tab_addr dans la bdd
             cursor.executemany('INSERT INTO installation VALUES (?,?)', tab_installation)
             cursor.executemany('INSERT INTO adresse VALUES (?,?,?,?)', tab_addr)
 

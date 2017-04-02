@@ -33,4 +33,3 @@ csv2db_installation(BOOL_IMPORT_CSV_ON_LAUNCH)
 csv2db_equipement(BOOL_IMPORT_CSV_ON_LAUNCH)
 csv2db_activite(BOOL_IMPORT_CSV_ON_LAUNCH)
 launch_rest_api_service()
-

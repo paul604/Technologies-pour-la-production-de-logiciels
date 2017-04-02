@@ -12,8 +12,8 @@ def csv2db_equipement(update):
         #get le CSV
         file_full_name = 'equipements.csv'
         file_path = PROJECT_ROOT + os.path.sep + 'data' + os.path.sep + 'csv' + os.path.sep + file_full_name
-        file = open(file_path,'r')
-        read = csv.DictReader(file)
+        file_E = open(file_path,'r', encoding="utf8")
+        read = csv.DictReader(file_E)
 
         tab_equipements = []
         # foreach sur le CSV et ajout dans un tableau pour ajout dans bdd

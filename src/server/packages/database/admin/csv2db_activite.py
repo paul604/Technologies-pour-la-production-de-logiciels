@@ -12,8 +12,8 @@ def csv2db_activite(update):
         #get le CSV
         file_full_name = 'activites.csv'
         file_path = PROJECT_ROOT + os.path.sep + 'data' + os.path.sep + 'csv' + os.path.sep + file_full_name
-        file = open(file_path,'r')
-        read = csv.DictReader(file)
+        file_A = open(file_path,'r', encoding="utf8")
+        read = csv.DictReader(file_A)
 
         tab_activites = []
         # foreach sur le CSV et ajout dans un tableau pour ajout dans bdd
@@ -31,7 +31,7 @@ def csv2db_activite(update):
             # DELETE les donnees pour éviter les doublon
             cursor.execute("""DELETE FROM activite;""")
 
-            # add les data du tableau tab_activites dans la bdd 
+            # add les data du tableau tab_activites dans la bdd
             cursor.executemany('INSERT INTO activite(numero_activites, numero_equipements, desc_act, nom) VALUES (?,?,?,?)', tab_activites)
             conn.commit()
             printerr(file_full_name + ' dumped successfully into database ' + DB_FULL_NAME + ' (feel free to set `BOOL_IMPORT_CSV_ON_LAUNCH` to `False` in "src/server/config.py" to disable this behaviour)')
