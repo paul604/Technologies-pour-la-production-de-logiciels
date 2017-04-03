@@ -27,7 +27,7 @@ DB_FULLPATH = DB_DIR + os.path.sep + DB_FULL_NAME
 '''
 Définition de constantes
 '''
-BOOL_IMPORT_CSV_ON_LAUNCH = False # mettre à `False` après un premier lancement réussi pour ne pas dump inutilement les CSV dans la DB à chaque lancement
+BOOL_IMPORT_CSV_ON_LAUNCH = True # mettre à `False` après un premier lancement réussi pour ne pas dump inutilement les CSV dans la DB à chaque lancement
 CLIENT_PATH = PROJECT_ROOT + os.path.sep + 'src' + os.path.sep + 'client'
 WELCOMING_PAGE_PATH = CLIENT_PATH + os.path.sep + 'html'
 WELCOMING_PAGE_NAME = 'index.html'
