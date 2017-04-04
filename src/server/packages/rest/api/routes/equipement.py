@@ -4,7 +4,7 @@ from ...lib.bottle import route, request
 from ...lib.utils import *
 
 
-
+from config import printerr
 # -------------------------------------------------------- équipements
 @route('/data/equipements')
 def e_route():
@@ -12,11 +12,11 @@ def e_route():
 	Récupère tous les équipements d'une ville donnée permettant de pratiquer une activité donnée
 	'''
 	if request.query.ville != '' and request.query.activite != '' :
-		
+
 		results = set()
 		ville_simplified_input = simplify(request.query.ville)
 		activite_simplified_input = simplify(request.query.activite)
-		
+
 		for eaa in e_get_addr_act():
 			ville_db_name = eaa[1].ville
 			activite_db_name = eaa[2].nom
@@ -27,7 +27,7 @@ def e_route():
 
 	'''
 	Liste les équipements où l'on peut pratiquer l'activité dont le nom exact (`request.query.activite`) est passé en GET
-	'''	
+	'''
 	if request.query.activite != '':
 		equipements = set()
 		for num in a_get_nums(request.query.activite): # ce set de `numero_equipements` contient les ID des équipements à renvoyer
